@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+<h3>Following reports can be run:</h3>
+<table border="1">
+    <tr><th>Report Name</th></tr>
+{% for report in report_list %}
+    <tr><td><a href="/run/?et={{report.rid}}"><font color=”red">{{report.rname}}</font></a></td></tr>
+{% endfor %}
+</table>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<report xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" guid="f0917e63-c2c0-4c62-877f-575967d225e6" schema-version="1.1" last-modified-time="201811301557085547" show-empty="true" auto-merge="false">
+  <datasources>
+    <datasource guid="1d36ae7c-c2a7-42c4-a40e-df60f9e472ca">
+      <name>EMBEDED_DS</name>
+      <type>SEMANTICLAYER</type>
+      <list-properties>
+        <property name="mode">managed</property>
+      </list-properties>
+    </datasource>
+  </datasources>
+  <datasets>
+    <dataset guid="de51890e-4887-4391-860f-13ca7244ec42">
+      <name>ar.case/SalesAnalysisQuery</name>
+      <label>Profitability Analysis</label>
+      <columns>
+        <column type="origin">
+          <name>{{dimension0}}</name>
+          <display-name>{{dimension0}}</display-name>
+          <data-type namespace="SAP">STRING</data-type>
+        </column>
+        <column type="origin">
+          <name>{{measure0}}</name>
+          <display-name>{{measure0}}</display-name>
+          <data-type namespace="SAP">DOUBLE</data-type>
+        </column>
+      </columns>
+      <parameters />
+      <data-source-ref ref-id="1d36ae7c-c2a7-42c4-a40e-df60f9e472ca" />
+    </dataset>
+  </datasets>
+  <report-parameters />
+  <sections>
+    <section col-end="11" guid="d3b735fb-47d1-4834-a7c8-b5088f8cecb0" row-start="2" col-start="2" row-end="7">
+      <header guid="7155045f-c0f0-4b4a-b5ec-e192724e7d01">
+        <dataset-ref ref-id="de51890e-4887-4391-860f-13ca7244ec42" />
+        <filters />
+        <biz-funcs />
+        <row-groupings />
+        <col-groupings />
+      </header>
+      <body guid="e85dfbae-9301-457f-aeb8-e30ef05a0876">
+        <table-header>
+          <row-end>2</row-end>
+          <row-from>2</row-from>
+        </table-header>
+        <table-body>
+          <cell guid="1b59eeb4-a61f-4f8d-9ad3-87ddc280913a" row-start="2" col-start="2">
+            <attr>
+              <expression type="CONSTANT"><![CDATA[{{dimension0}}]]></expression>
+              <data-type namespace="SAP">STRING</data-type>
+            </attr>
+          </cell>
+          <cell guid="1795a7fa-34c6-4b6b-9f92-43aea8dbda3d" row-start="2" col-start="3">
+            <attr>
+              <expression type="CONSTANT"><![CDATA[{{measure0}}]]></expression>
+              <data-type namespace="SAP">STRING</data-type>
+            </attr>
+          </cell>
+          <cell guid="b471d8c5-c3e2-45dd-8e9d-f919037360a7" row-start="2" col-start="4" />
+          <cell guid="fa50eccb-128e-4921-9b16-136791c395c2" row-start="2" col-start="5" />
+          <cell guid="0f21f069-4170-43ab-8a86-41c198e4e330" row-start="2" col-start="6" />
+          <cell guid="6d11c913-aedc-4456-976c-888139a6976d" row-start="2" col-start="7" />
+          <cell guid="f01ded57-1808-46bf-8324-6612c1311ce9" row-start="2" col-start="8" />
+          <cell guid="10f47117-ee84-4801-847e-77435862b0c5" row-start="2" col-start="9" />
+          <cell guid="73174222-92e1-4003-8dab-92846985fac6" row-start="2" col-start="10" />
+          <cell guid="4ee46608-0f47-4dd1-849c-a91bb59b76a0" row-start="2" col-start="11" />
+          <cell guid="f640cbc1-4f74-4af7-a996-853d7e94f318" row-start="3" col-start="2">
+            <attr>
+              <expression type="CELL_EXPR"><![CDATA[iaGet("{{dimension0}}")]]></expression>
+              <data-type namespace="SAP">STRING</data-type>
+            </attr>
+          </cell>
+          <cell guid="b55b41f2-3be7-4965-92ec-e71946faf13e" row-start="3" col-start="3">
+            <attr>
+              <expression type="CELL_EXPR"><![CDATA[iaGet("{{measure0}}")]]></expression>
+              <data-type namespace="SAP">STRING</data-type>
+            </attr>
+          </cell>
+          <cell guid="41ece4a3-2271-46df-be6a-5a9c60f02da4" row-start="3" col-start="4" />
+          <cell guid="5bb900a8-2309-435a-aa10-12d7251fc599" row-start="3" col-start="5" />
+          <cell guid="15d3e832-e53c-4f3d-8b65-496f5bcf6dbd" row-start="3" col-start="6" />
+          <cell guid="53c33fe6-89c6-4a70-b7dc-694d3b67e7ec" row-start="3" col-start="7" />
+          <cell guid="06fa3cf9-4ba0-47f2-b57f-84208283d653" row-start="3" col-start="8" />
+          <cell guid="476cef09-17a9-4964-a869-1cd57544989f" row-start="3" col-start="9" />
+          <cell guid="b260eed5-3f83-4d36-8edb-93a3fdcdd806" row-start="3" col-start="10" />
+          <cell guid="09c46bf2-d521-4e73-bfce-ec3450491355" row-start="3" col-start="11" />
+          <cell guid="261244e1-276a-4c62-a386-ccec4c16ff94" row-start="4" col-start="2" />
+          <cell guid="b18f197a-a9b6-43a9-817b-b52a90a429c1" row-start="4" col-start="3" />
+          <cell guid="809d2d82-7055-48fb-a51c-39fbc302fd3a" row-start="4" col-start="4" />
+          <cell guid="44f1fc08-3391-437d-bab8-f7797a57e776" row-start="4" col-start="5" />
+          <cell guid="bb0e0cff-0bd3-4a46-9fd6-a3eb6d65fbd1" row-start="4" col-start="6" />
+          <cell guid="0eea12ad-3c3a-4329-a0f0-c20834edb7a4" row-start="4" col-start="7" />
+          <cell guid="0159f983-c4e5-42c7-b5fb-5902eef0e55e" row-start="4" col-start="8" />
+          <cell guid="6acccd11-aa0b-4b2e-83ee-6b293ae3345c" row-start="4" col-start="9" />
+          <cell guid="d637989a-2e41-411e-883e-ad5a8060afaa" row-start="4" col-start="10" />
+          <cell guid="b5443a87-8331-43db-a159-b50ae6ea0046" row-start="4" col-start="11" />
+          <cell guid="0165d633-9229-415a-a38f-dcbf7570a345" row-start="5" col-start="2" />
+          <cell guid="a2319283-5a29-4549-ad0d-06b6e2c1b143" row-start="5" col-start="3" />
+          <cell guid="3ad8648f-4c55-4c71-9ea4-0d61b7daf2c4" row-start="5" col-start="4" />
+          <cell guid="23f7a0db-d703-45a6-9380-802b070e8a4b" row-start="5" col-start="5" />
+          <cell guid="a54a6cee-1edf-48d1-96d1-949d2d6bd979" row-start="5" col-start="6" />
+          <cell guid="adcaae44-b4dd-4373-a5af-ec9dacb68ed9" row-start="5" col-start="7" />
+          <cell guid="e034514b-238e-4b05-a46d-1c63c8ff9e33" row-start="5" col-start="8" />
+          <cell guid="050249e4-4704-473d-bb79-448a5c69bbe5" row-start="5" col-start="9" />
+          <cell guid="757cb133-d55f-44c5-96c9-9a622c3a0461" row-start="5" col-start="10" />
+          <cell guid="a2a759f5-2c58-4185-ab39-3e28fb25a908" row-start="5" col-start="11" />
+          <cell guid="62a35a6c-b6a5-4b86-879b-bd3907f5c022" row-start="6" col-start="2" />
+          <cell guid="803caf4d-55ee-4286-8723-9312ac72dfca" row-start="6" col-start="3" />
+          <cell guid="e251872a-3925-4f2b-92e7-73ac4691656c" row-start="6" col-start="4" />
+          <cell guid="fc37ae41-1e30-402d-96e3-60d79199b383" row-start="6" col-start="5" />
+          <cell guid="1b0613ca-4a54-45b6-94eb-aebc5f720852" row-start="6" col-start="6" />
+          <cell guid="f49dd9a3-e978-41ef-97e5-5925cb3f6391" row-start="6" col-start="7" />
+          <cell guid="162c1ff4-44f6-4056-b784-e21396fa0b69" row-start="6" col-start="8" />
+          <cell guid="e43b5cca-3287-49ee-a8f2-77abbda2f34b" row-start="6" col-start="9" />
+          <cell guid="dc182a40-2856-4d31-bde3-91122f89d3de" row-start="6" col-start="10" />
+          <cell guid="29566f50-7a99-431e-b4f7-521eedceede1" row-start="6" col-start="11" />
+          <cell guid="d18e1402-d8dc-44f4-b3be-8d991a0d2c02" row-start="7" col-start="2" />
+          <cell guid="db76cdfb-288d-4d48-be98-900ceead780c" row-start="7" col-start="3" />
+          <cell guid="3d60b164-0432-45f8-ba63-8e709080eef6" row-start="7" col-start="4" />
+          <cell guid="e26449d0-e4e8-4211-a45e-410072d762c8" row-start="7" col-start="5" />
+          <cell guid="fdb7b5b8-91d5-4996-b475-9a1295eecf00" row-start="7" col-start="6" />
+          <cell guid="490f3f16-8526-47b3-95a4-ea436e101526" row-start="7" col-start="7" />
+          <cell guid="1bd2f8e2-bb7a-4c18-8836-1b339a91685a" row-start="7" col-start="8" />
+          <cell guid="3a7b8592-8493-42bb-93af-bb01d4ef02fe" row-start="7" col-start="9" />
+          <cell guid="a0ef2927-2536-418a-a4a7-890d7241f686" row-start="7" col-start="10" />
+          <cell guid="94d27d7b-ca21-4669-a056-f942d3d4ab45" row-start="7" col-start="11" />
+        </table-body>
+      </body>
+    </section>
+  </sections>
+</report>

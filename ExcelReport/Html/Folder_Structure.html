@@ -1,0 +1,15 @@
+
+<h1>Folder Structure in OneDrive (By MS Graph API)</h1>
+<table border="1">
+	<tr><th>Name:</th></tr>
+{% for folder in folder_list %}
+	{% ifequal folder.is_folder 'T' %}
+		<tr><td><font color="blue">{{folder.display_name}}</font></td></tr>
+	{% else %}
+		<tr><td><font color="red">{{folder.display_name}}</font></td></tr>
+	{% endifequal %}
+{% endfor %}
+</table>
+
+
+<a href="/index/">Back</a>

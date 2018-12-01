@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/office-js/custom-functions.schema.json",
+  "functions": [
+    {
+      "id": "IAGET",
+      "name": "IAGET",
+      "description": "diaplay field",
+      "helpUrl": "http://www.contoso.com",
+      "result": {
+        "type": "string"
+      },
+      "parameters": [
+        {
+          "name": "field",
+          "description": "field name",
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}

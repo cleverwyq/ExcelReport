@@ -17,7 +17,7 @@ from django.conf.urls import url
 from django.contrib import admin
 from .views import RedirectPage, ListPage, \
     GetCodePage, RunPage, DimensionMeasureView, \
-    SaveReportView, Test, DownloadReportView
+    SaveReportView, Test, DownloadReportView, SendJson
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -28,5 +28,6 @@ urlpatterns = [
     url(r'^views/', DimensionMeasureView.as_view(), name="report fields"),
     url(r'^test/', Test.as_view(), name="test"),
     url(r'^fields/', SaveReportView.as_view(), name="Save Report"),
-    url(r'^dl/', DownloadReportView.as_view(), name="Download")
+    url(r'^dl/', DownloadReportView.as_view(), name="Download"),
+    url(r'^givemejson/', SendJson.as_view(), name="tt")
 ]

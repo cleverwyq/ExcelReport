@@ -145,7 +145,7 @@
         <bt:Url id="Contoso.GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812" />
         <bt:Url id="Contoso.DesktopFunctionFile.Url" DefaultValue="https://localhost:5050/assets/function-file/function-file.html" />
 
-        <bt:Url id="JSON-URL" DefaultValue="https://localhost:5050/assets/config/customfunctions.json" /> <!--specifies the location of your JSON file-->
+        <bt:Url id="JSON-URL" DefaultValue="https://localhost:5050/givemejson/" /> <!--specifies the location of your JSON file-->
         <bt:Url id="JS-URL" DefaultValue="https://localhost:5050/assets/js/customer-functions.js" /> <!--specifies the location of your JavaScript file-->
         <bt:Url id="HTML-URL" DefaultValue="https://localhost:5050/index/" /> <!--specifies the location of your HTML file-->
 
@@ -155,6 +155,9 @@
         <bt:String id="Contoso.TaskpaneButton.Label" DefaultValue="Show Taskpane" />
         <bt:String id="Contoso.Group1Label" DefaultValue="Commands Group" />
         <bt:String id="Contoso.GetStarted.Title" DefaultValue="Get started with your sample add-in!" />
+
+            <bt:String id="namespace" DefaultValue="SAP" /> <!--specifies the namespace that will be prepended to a function's name when it is called in Excel. Can only contain alphanumeric characters and periods.-->
+
       </bt:ShortStrings>
       <!-- LongStrings max characters==250. -->
       <bt:LongStrings>

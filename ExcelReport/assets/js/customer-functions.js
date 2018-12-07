@@ -1,4 +1,9 @@
+
 function iaGet(field) {
-    return "[" + field + "]";
-}
-//CustomFunctionMappings.IAGET = iaGet;
+    var ret = "[" + field + "]";
+    return ret;
+};
+
+//var CustomFunctionMappings = {};
+CustomFunctionMappings.iaGet = iaGet;
+console.log("iaGet " + iaGet("bp"));

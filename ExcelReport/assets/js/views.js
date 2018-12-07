@@ -8,20 +8,18 @@ var start_cell, end_cell;
 var sheet_;
 var report_fields = {};
 report_fields.dimension = report_fields.measure = "none";
-//
+///////////........
 (
-	function(){
-        Office.initialize = function (reason) {
-            $(document).ready(function () {
-//            $('#add').click(setColor);
-            });
-    };
+	function() {
+//        Office.initialize = function (reason) {
+//            return CustomFunctions.initialize();
+//        };
 
     function postReportInfo(fields_dict) {
         var request = new XMLHttpRequest();
         request.open("POST", "/fields/");
         request.send(JSON.stringify(report_fields));
-    }
+    };
     postReportInfo2 = postReportInfo;
 
     //param: Sheet1!E2

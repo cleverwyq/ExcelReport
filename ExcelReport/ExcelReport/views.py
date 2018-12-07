@@ -177,6 +177,14 @@ class Test(View):
         return render(request, 'Folder_Structure.html', context)
 
 
+class SendJson(View):
+    def dispatch(self, request, *args, **kwargs):
+        response = render(request, 'customfunctions.json', {})
+        response['Access-Control-Allow-Origin'] = '*'
+        response['Content-Type'] = 'application/octet-stream'
+
+        return response
+
 class DimensionMeasureView(View):
     @xframe_options_exempt
     def dispatch(self, request, *args, **kwargs):

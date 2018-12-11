@@ -9,11 +9,13 @@ var sheet_;
 var report_fields = {};
 report_fields.dimension = report_fields.measure = "none";
 ///////////........
+
+Office.initialize = function (reason) {
+};
+
 (
 	function() {
-//        Office.initialize = function (reason) {
-//            return CustomFunctions.initialize();
-//        };
+
 
     function postReportInfo(fields_dict) {
         var request = new XMLHttpRequest();
@@ -108,3 +110,100 @@ report_fields.dimension = report_fields.measure = "none";
     setCellText2 = setCellText;
 })();
 
+function errorHandlerFunction(error) {
+    console.log("Error: " + error);
+    if (error instanceof OfficeExtension.Error) {
+        console.log("Error info: " + JSON.stringify(error.debugInfo));
+    }
+};
+
+function handleChange(event) {
+    function handle(context) {
+        return context.sync()
+            .then(function() {
+                console.log("change type of event: " + event.changeType);
+                console.log("Address of event: " + event.address);
+                console.log("Source of event " + event.source);
+            }
+            );
+
+    }
+
+    return Excel.run(handle).catch(errorHandlerFunction);
+};
+
+function handleSelectionChange(event) {
+    function handle(context) {
+        var range = context.workbook.getSelectedRange();
+        range.load("address");
+        range.load("columnCount");
+        range.load("columnIndex");
+        range.load("rowCount");
+        range.load("rowIndex");
+        return context.sync()
+            .then(function() {
+                    console.log(`Selection range: ${range.address} column count: ${range.columnCount}`);
+                    setSelectionArea(range.columnIndex + 1, range.rowIndex+1,
+                        range.columnCount, range.rowCount);
+                    drawGrid();
+                }
+            );
+    }
+
+    return Excel.run(handle).catch(errorHandlerFunction);
+};
+
+function _initialEventHandler() {
+    function init(context) {
+        var worksheet = context.workbook.worksheets.getActiveWorksheet();
+        worksheet.onChanged.add(handleChange);
+        worksheet.onSelectionChanged.add(handleSelectionChange);
+        return context.sync()
+            .then(function() {
+                    console.log("Event regitser successfully")
+                }
+            );
+    }
+    return Excel.run(init).catch(errorHandlerFunction);
+};
+
+function _selectEntireRow(row) {
+    function selectRow(context) {
+        var worksheet = context.workbook.worksheets.getActiveWorksheet();
+        var rowRangeAddress = `${row}:${row}`;
+        console.log("range select: " + rowRangeAddress);
+        var range = worksheet.getRange(rowRangeAddress);
+        range.select();
+
+        return context.sync()
+            .then(function() {
+                    console.log(`Row ${row}selected`)
+                }
+            );
+    }
+
+    return Excel.run(selectRow).catch(errorHandlerFunction);
+};
+
+function _selectEntireColumn(column) {
+    function selectColumn(context) {
+        var worksheet = context.workbook.worksheets.getActiveWorksheet();
+        var letter = String.fromCharCode(column - 1 + 'A'.charCodeAt())
+        var columnRangeAddress = `${letter}:${letter}`;
+        console.log("range select: " + columnRangeAddress);
+        var range = worksheet.getRange(columnRangeAddress);
+        range.select();
+
+        return context.sync()
+            .then(function() {
+                    console.log(`Column ${column}selected`)
+                }
+            );
+    }
+
+    return Excel.run(selectColumn).catch(errorHandlerFunction);
+};
+
+var initialEventHandler = _initialEventHandler;
+var selectEntireRow = _selectEntireRow;
+var selectEntireColumn = _selectEntireColumn;

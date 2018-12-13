@@ -232,3 +232,10 @@ class DownloadReportView(View):
     def dispatch(self, request, *args, **kwargs):
 
         return HttpResponse("Download")
+
+
+class PopupHtmlView(View):
+    def dispatch(self, request, *args, **kwargs):
+        response = render(request, 'InsertGroup.html', None)
+        response["allow-same-origin"] = '*'
+        return response

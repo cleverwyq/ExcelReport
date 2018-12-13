@@ -11,7 +11,7 @@ report_fields.dimension = report_fields.measure = "none";
 ///////////........
 
 Office.initialize = function (reason) {
-};
+        };
 
 (
 	function() {

@@ -29,9 +29,6 @@
   <!-- Domains that will be allowed when navigating. For example, if you use ShowTaskpane and then have an href link, navigation will only be allowed if the domain is on this list. -->
   <AppDomains>
     <AppDomain>https://localhost:5050/</AppDomain>
-    <AppDomain>https://login.microsoftonline.com/</AppDomain>
-    <AppDomain>https://live.com/</AppDomain>
-    <AppDomain>https://microsoft.com/</AppDomain>
   </AppDomains>
   <!--End Basic Settings. -->
 

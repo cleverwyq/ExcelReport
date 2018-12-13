@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Insert Group</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js"></script>
+    <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-2.2.1.min.js"></script>
+    <!--<script type="text/javascript" src="popup.js"></script>-->
+</head>
+<body>
+   <script type="text/javascript">
+   function OKClicked() {
+       console.log("OK clicked");
+       var position = $("input[name='group']:checked").val();
+       var groupby = $("#group-dimensions").val();
+       var content = position + '//' + groupby;
+       console.log("Dialog will send " + content);
+       Office.context.ui.messageParent(content);
+   };
+
+   (function () {
+        Office.initialize = function (reason) {
+            $(document).ready(function () {
+                console.log("in popup ")
+                $("#OKButton").click(OKClicked);
+            }
+            );
+        }
+       }
+    )();
+   </script>
+    <div>
+        <p>Add New Group</p>
+    </div>
+    <div>
+        <p>Position</p>
+        <label><input name="group" type="radio" value="Left"/>Left</label>
+        <label><input name="group" type="radio" value="Right"/>Right</label>
+    </div>
+    <div>
+        <p>Group by:</p>
+        <select id="group-dimensions">
+            <option>Business Partner Name</option>
+            <option>Document Year</option>
+            <option>Project Name</option>
+        </select>
+    </div>
+
+    <div><button id="OKButton">OK</button></div>
+</body>
+</html>

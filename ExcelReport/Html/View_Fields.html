@@ -20,46 +20,69 @@
     <script type="text/javascript" src="../assets/js/canvas.js"></script>
 
     <script type="text/javascript">
-	$(document).ready(function(){
-        Office.initialize = function (reason) {
-            console.log("init func in design page");
-          };
-        Office.onReady(function(){
-            console.log("ready in sub page");
+
+    var dialog = null;
+    function InsertGroup() {
+        console.log("Insert Group");
+        Office.context.ui.displayDialogAsync(
+           'https://localhost:5050/popup-html/',
+           {height: 45, width: 55},
+
+           function (result) {
+               dialog = result.value;
+               dialog.addEventHandler(Microsoft.Office.WebExtension.EventType.DialogMessageReceived, processMessage);
+           }
+        );
+    };
+
+    function processMessage(arg) {
+        var content = arg.message;
+        console.log("parent receive " + content);
+        var arr = content.split("//");
+        var display = "The positon is :" + arr[0] + " group by " + arr[1];
+        $("#display").text(display);
+        dialog.close();
+    }
+
+    Office.initialize = function (reason) {
+        $(document).ready(function(){
+
+            //$("#Save").click(test);
+
+            $("#InsertGroup").click(InsertGroup);
+
+            $("#browser").treeview({
+                toggle: function() {
+                    var field = $(this).find(">span").text();
+                    setCellText2(field);
+                    console.log("%s was added", field);
+                }
+            });
+
+            initialEventHandler();
+            var canvas = document.getElementById("canvas");
+            var context = canvas.getContext("2d");
+            initParameters(canvas, context);
+            drawGrid();
+
+            canvas.onmousedown = function(e) {
+                console.log("mouse click at canvas " + e);
+                var x = e.layerX;
+                var y = e.layerY;
+
+                var columnIndex = getColumnIndex(x);
+                var rowIndex = getColumnIndex(y);
+                console.log(`Cell (${rowIndex}, ${columnIndex}) selected`);
+
+                if (columnIndex == 0 && rowIndex > 0) {
+                    selectEntireRow(rowIndex)
+                }
+                else if (rowIndex == 0 && columnIndex > 0) {
+                    selectEntireColumn(columnIndex)
+                }
+            }
         });
-        //$("#Save").click(test);
-		$("#browser").treeview({
-			toggle: function() {
-			    var field = $(this).find(">span").text();
-                setCellText2(field);
-				console.log("%s was added", field);
-			}
-		});
-
-        initialEventHandler();
-        var canvas = document.getElementById("canvas");
-        var context = canvas.getContext("2d");
-        initParameters(canvas, context);
-        drawGrid();
-
-        canvas.onmousedown = function(e) {
-            console.log("mouse click at canvas " + e);
-            var x = e.layerX;
-            var y = e.layerY;
-
-            var columnIndex = getColumnIndex(x);
-            var rowIndex = getColumnIndex(y);
-            console.log(`Cell (${rowIndex}, ${columnIndex}) selected`);
-
-            if (columnIndex == 0 && rowIndex > 0) {
-                selectEntireRow(rowIndex)
-            }
-            else if (rowIndex == 0 && columnIndex > 0) {
-                selectEntireColumn(columnIndex)
-            }
-        }
-	});
-
+    };
 
 
 	</script>
@@ -94,7 +117,11 @@
 	<button id="Save">Save Report</button><div/>
     <a href="/run/?et=abcdabcd-dfb3-4b2c-9c70-6998336c9410">Run</a><div/>
     <a href="/index/">Back</a><div/>
-    <canvas id="canvas" width="300" height="300">
+    <button id="InsertGroup">Insert Group</button><div/>
+    <div>
+        <label id="display"></label>
+    </div>
+        <canvas id="canvas" width="300" height="300">
         Canvas is not supported
     </canvas>
 
